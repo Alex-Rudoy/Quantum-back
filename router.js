@@ -1,6 +1,5 @@
 const router = require("express").Router();
-const userController = require("./controllers/feedbackController");
-const stepController = require("./controllers/stepController");
+const feedbackController = require("./controllers/feedbackController");
 const cors = require("cors");
 
 router.use(cors());
@@ -12,6 +11,6 @@ router.get("/", (req, res) =>
 );
 
 // check token to log out front-end if expired
-router.post("/checkToken", userController.checkToken);
+router.post("/qgfeedback", feedbackController.sendQGfeedback);
 
 module.exports = router;
