@@ -8,7 +8,8 @@ exports.sendQGfeedback = async function (req, res) {
   try {
     await sgMail.send({
       from: process.env.SENDGRID_API_KEY,
-      to: process.env.SENDGRID_API_KEY,
+      to: "rudoy4ik@gmail.com",
+      // to: process.env.SENDGRID_API_KEY,
       subject: "Feedback from Quantum gravity",
       html: `
         <p>Name: ${req.body.name}</p>
