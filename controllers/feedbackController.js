@@ -7,7 +7,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 exports.sendQGfeedback = async function (req, res) {
   try {
     await sgMail.send({
-      from: process.env.SENDGRID_API_KEY,
+      from: process.env.SENDGRID_SENDER,
       to: "rudoy4ik@gmail.com",
       // to: process.env.SENDGRID_API_KEY,
       subject: "Feedback from Quantum gravity",
@@ -17,10 +17,11 @@ exports.sendQGfeedback = async function (req, res) {
         <p>Message: ${req.body.message}</p>
       `,
     });
-    res.send();
+    res.json();
   } catch (error) {
+    console.log(error);
     res
       .status(400)
-      .send("Some error occured, please, try later - " + error.message);
+      .json("Some error occured, please, try later - " + error.message);
   }
 };
